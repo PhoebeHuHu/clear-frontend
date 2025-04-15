@@ -49,7 +49,8 @@ const CargoForm = ({ onSubmit, onCancel }: ICargoFormProps) => {
   });
 
   const handleChange = (field: keyof ICargoItem, value: string | number) => {
-    setFormValues((prev) => ({ ...prev, [field]: value }));
+    const parsedValue = field === "number_of_packages" ? Number(value) : value;
+    setFormValues((prev) => ({ ...prev, [field]: parsedValue }));
   };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
